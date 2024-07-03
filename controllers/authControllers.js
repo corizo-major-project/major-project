@@ -23,7 +23,7 @@ exports.userRegister = async (req, res) => {
         return res.status(500).json({ error: 'Registration failed', error });
     }
 }
-
+//
 exports.userLogin = async (req, res) => {
     try {
         const { userName, password } = req.body;

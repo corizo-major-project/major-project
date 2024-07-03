@@ -217,7 +217,7 @@ footer {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
-    width: 100%; /* Full width */
+    width: 100%; /* Full width 100%*/
 }
 
 .btn:hover {

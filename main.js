@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const db = require("./config/db");
 
+//app
 const app = express();
 const PORT = process.env.PORT || 5000;
 

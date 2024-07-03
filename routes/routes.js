@@ -19,6 +19,7 @@ router.get("/contact",(req, res) => {
 router.get("/sign-up", (req, res) => {
     res.render("signup", { title: "Sign Up", user: req.user }); // Pass user object if authenticated
 });
+//
 
 router.post('/sign-up', authController.userRegister);
 
