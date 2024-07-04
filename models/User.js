@@ -14,7 +14,8 @@ const userSchema = new mongoose.Schema({
                 // Simple regex to validate phone numbers
                 return /\d{10}/.test(v);
             },
-            message: props => `${props.value} is not a valid phone number!`
+            message: props => `${props.value} is not a valid phone number!`,
+            unique: true
         }
     },
     role: {type: String, required: true, enum: ["ADMIN","USER"]}

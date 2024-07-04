@@ -1,0 +1,39 @@
+<!-- headerForAdmin.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">ShoppingKaro</h1>
+            <nav>
+                <!-- Dropdown for options -->
+                <div class="dropdown">
+                    <button class="dropbtn">Options</button>
+                    <div class="dropdown-content">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="auth-buttons">
+                <a href="/logout" class="btn login">Logout</a>
+            </div>
+            <div class="auth-buttons">
+                <!-- Auth buttons here -->
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+</body>
+</html>
