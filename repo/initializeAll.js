@@ -1,11 +1,10 @@
-// initialize.js
 const Product = require("../models/Products");
 const Review = require("../models/Reviews");
 
-async function initialize(username) {
+async function initializeAll() {
     try {
         // Retrieve all products created by the username
-        const products = await Product.find({ createdBy: username });
+        const products = await Product.find();
 
         // Iterate through each product
         for (let product of products) {
@@ -37,4 +36,4 @@ async function initialize(username) {
     }
 }
 
-module.exports = initialize;
+module.exports = initializeAll;

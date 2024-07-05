@@ -3,15 +3,19 @@ const Product = require("../models/Products");
 
 exports.renderAdminPage = async (req, res) => {
     try {
-        const username = req.user.userName;
+        if (req.user.role === "ADMIN") {
+            const username = req.user.userName;
 
-        // Initialize products and reviews
-        await initialize(username);
+            // Initialize products and reviews
+            await initialize(username);
 
-        // Retrieve products created by the user
-        const products = await Product.find({ createdBy: username });
+            // Retrieve products created by the user
+            const products = await Product.find({ createdBy: username });
+            console.log(products.length)
+            res.render("admin", { title: "Admin", products });
+        }
+        res.redirect("/user")
 
-        res.render("admin", { title: "Admin", products });
     } catch (err) {
         console.error(err);
         res.render('error', { title: 'Error' });

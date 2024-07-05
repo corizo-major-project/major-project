@@ -35,34 +35,25 @@ exports.userRegister = async (req, res) => {
 exports.userLogin = async (req, res) => {
     try {
         const { username, password } = req.body;
-        
-        // Check if empID and password are provided
-        if (!username || !password) {
-            return res.status(400).redirect('/login?error=' + encodeURIComponent('Please provide username and password'));
-        }
-        
-        // Find user by empID
+
+        // Authenticate user
         const user = await User.findOne({ userName: username });
- 
-        // Check if user exists and password is correct
+
         if (!user || !(await bcrypt.compare(password, user.password))) {
             return res.status(401).redirect('/login?error=' + encodeURIComponent('Invalid username or password'));
         }
-        
-        // Extract designation from user object
-        const { role } = user;
-        
-        // Generate JWT token
-        const token = jwt.sign({ userId: user._id, userName: user.userName, role: role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        
-        // Set token in cookie
-        res.cookie('jwt', token, { httpOnly: true });
 
-        // Redirect to dashboard or any other page
-        if(role === "ADMIN"){
+        // Generate JWT token
+        const token = jwt.sign({ userId: user._id, userName: user.userName, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+        // Set token in cookie based on role
+        if (user.role === "ADMIN") {
+            res.cookie('admin_jwt', token, { httpOnly: true });
             return res.redirect("/admin");
+        } else {
+            res.cookie('user_jwt', token, { httpOnly: true });
+            return res.redirect("/user");
         }
-        return res.redirect("/user");
     } catch (error) {
         console.error('Error:', error);
         return res.status(500).redirect('/login?error=' + encodeURIComponent('Internal server error'));

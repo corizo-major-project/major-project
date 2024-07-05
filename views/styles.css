@@ -52,6 +52,10 @@ header nav ul li a {
     text-decoration: none;
 }
 
+header .nav-right {
+    float: right;
+}
+
 header .auth-buttons {
     float: right;
 }
