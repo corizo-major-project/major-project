@@ -74,3 +74,8 @@ exports.userLogin = async (req, res) => {
 exports.renderSignupForm = (req, res) => {
     res.render("signup", { title: "Sign Up" });
 };
+
+exports.logouthandle = (req, res) => {
+    res.clearCookie('jwt');
+    res.redirect('/');
+};
