@@ -6,6 +6,7 @@
     <title> <%= title  %> </title>
     <link rel="icon" type="image/x-icon" href="../../logo/logo.jpg">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
@@ -13,12 +14,18 @@
             <h1 class="logo">ShoppingKaro</h1>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="../user/">Home</a></li>
-                    <li><a href="../user/profile">Profile</a></li>
+                    <li><a href="/user">Home</a></li>
+                    <li><a href="/user/profile">Profile</a></li>
+                    <li><a href="/cart">Cart(<%= cartCount %>)</a></li>
                 </ul>
             </nav>
             <div class="auth-buttons">
+                <!-- Logout button -->
                 <a href="/logout" class="btn login">Logout</a>
+            </div>
+            <!-- Greeting -->
+            <div class="auth-buttons" style="margin-right: 10px;">
+                <h3>Hello, <%= userName %></h3>
             </div>
             <div class="menu-toggle">
                 <span></span>
@@ -27,5 +34,5 @@
             </div>
         </div>
     </header>
-    </body>
+</body>
 </html>

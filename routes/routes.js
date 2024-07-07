@@ -5,6 +5,7 @@ const authController = require('../controllers/authControllers');
 const userController = require("../controllers/userController");
 const adminController = require("../controllers/adminController");
 const homeController = require("../controllers/homeController");
+const commonController = require("../controllers/commonController");
 const verifyToken = require('../middleware/authMiddleware');
 const Product = require("../models/Products");
 const multer = require("multer");
@@ -74,6 +75,11 @@ router.post("/admin/add-product", verifyToken, upload, async (req, res) => {
 router.get("/user", verifyToken, userController.renderUserPage);
 
 
+// Common Routes
+router.get("/product/:id", verifyToken, commonController.productInfo);
+router.get("/cart/add/:id", verifyToken, commonController.addProductToCart);
+router.post('/cart/remove/:id', verifyToken, commonController.removeProductFromCart);
+router.get("/cart", verifyToken, commonController.getCartItems);
 
 //logout
 router.get('/logout', authController.logouthandle);

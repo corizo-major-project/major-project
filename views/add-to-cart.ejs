@@ -1,0 +1,25 @@
+<%- include("./layout/headerForUser") %>
+
+<div class="container">
+    <h2>Shopping Cart</h2>
+    <div class="cart-table">
+        <div class="product-container">
+            <% productDetails.forEach(product => { %>
+                <div class="product-card">
+                    <div class="product-card-body">
+                        <a class="product-card-link" href="/product/<%= product._id %>">
+                            <img class="product-image" src="/uploads/<%= product.image %>" alt="<%= product.name %>">
+                            <h3><%= product.name %></h3>
+                            <p>Price: $<%= product.price %></p>
+                        </a>
+                        <form action="/cart/remove/<%= product._id %>" method="POST">
+                            <button type="submit" class="btn">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<%- include("./layout/footer.ejs") %>

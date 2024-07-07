@@ -1,0 +1,63 @@
+<%- include("./layout/headerForUser") %>
+
+<div class="page-container" style="margin-top: 20px;">
+    <div class="product-detail-card">
+        <div class="product-detail-left" style="width: 70%;">
+            <center>
+                <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" class="product-image" />
+            </center>
+        </div>
+        <div class="product-detail-right">
+            <h1><%= product.name %></h1><br/>
+            <p style="font-size: larger;"><b>Price: ₹<%= product.price %></b></p><br/>
+            <p>Inclusive of all taxes</p>
+            <div class="review-stars">
+                <% 
+                    const maxStars = 5;
+                    let fullStars = Math.floor(product.average_review);
+                    let halfStars = product.average_review % 1 >= 0.5 ? 1 : 0;
+                    let emptyStars = maxStars - fullStars - halfStars;
+                    for (let i = 0; i < fullStars; i++) { %>
+                        &#9733;
+                <% } 
+                    if (halfStars) { %>
+                        &#9734;
+                <% }
+                    for (let i = 0; i < emptyStars; i++) { %>
+                        &#9734;
+                <% } 
+                %>
+            </div>
+            <p>Description: <%= product.description %></p><br/><hr/><br/>
+            <div class="product-buttons">
+                <a href="/cart/add/<%= product._id %>" class="product-button-add-to-cart">
+                    <button class="btn">Add to Cart</button>
+                </a>
+                <a href="/checkout/<%= product._id %>" class="product-button-buy-now">
+                    <button class="btn">Buy Now</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="reviews-container">
+        <h2>Reviews</h2>
+        <% if (reviews.length > 0) { %>
+            <% reviews.forEach(review => { %>
+                <div class="review-card">
+                    <div class="review-header">
+                        <p><strong>User:</strong> <%= review.user %></p>
+                        <p><strong>Rating:</strong> <%= review.rating %> / 5</p>
+                    </div>
+                    <div class="review-body">
+                        <p><%= review.comment %></p>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No reviews yet.</p>
+        <% } %>
+    </div>
+</div>
+
+<%- include("./layout/footer.ejs") %>

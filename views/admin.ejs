@@ -1,41 +1,38 @@
 <%- include("layout/headerForAdmin.ejs") %>
 
 <div class="page-container">
-    <div class="products-heading-card">
-        <h1 class="products-heading">PRODUCTS</h1>
-    </div>
     <div class="product-container">
         <% products.forEach((row, index) => { %>
-            <div class="product-card">
-                <div class="product-card-header">
-                    Product <%= index + 1 %>
+            <a href="" class="product-card-link">
+                <div class="product-card">
+                    <div class="product-card-body">
+                        <img src="/uploads/<%= row.image %>" alt="<%= row.name %>" class="product-image" />
+                        <h3><%= row.name %></h3>
+                        <p>Price: ₹<%= row.price %></p>
+                        <p>Review: 
+                            <span class="stars">
+                                <% 
+                                    const maxStars = 5;
+                                    let fullStars = Math.floor(row.average_review);
+                                    let halfStars = row.average_review % 1 >= 0.5 ? 1 : 0;
+                                    let emptyStars = maxStars - fullStars - halfStars;
+                                    for (let i = 0; i < fullStars; i++) { %>
+                                        ★
+                                <% } 
+                                    if (halfStars) { %>
+                                        ⭐
+                                <% }
+                                    for (let i = 0; i < emptyStars; i++) { %>
+                                        ☆
+                                <% } 
+                                %>
+                            </span>
+                        </p>
+                        <p>Total Reviews: <%= row.total_reviews_received %></p>
+                    </div>
                 </div>
-                <div class="product-card-body">
-                    <img src="/uploads/<%= row.image %>" alt="<%= row.name %>" class="product-image" />
-                    <h2><%= row.name %></h2>
-                    <p>Price: ₹<%= row.price %></p>
-                    <p>Review: 
-                        <span class="stars">
-                            <% 
-                                const maxStars = 5;
-                                let fullStars = Math.floor(row.average_review);
-                                let halfStars = row.average_review % 1 >= 0.5 ? 1 : 0;
-                                let emptyStars = maxStars - fullStars - halfStars;
-                                for (let i = 0; i < fullStars; i++) { %>
-                                    ★
-                            <% } 
-                                if (halfStars) { %>
-                                    ⭐
-                            <% }
-                                for (let i = 0; i < emptyStars; i++) { %>
-                                    ☆
-                            <% } 
-                            %>
-                        </span>
-                    </p>
-                    <p>Total Reviews: <%= row.total_reviews_received %></p>
-                </div>
-            </div>
+            </a>
+            <hr /> <!-- Add horizontal line here -->
         <% }); %>
     </div>
 </div>

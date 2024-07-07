@@ -228,7 +228,6 @@ footer {
     background: #45a049; /* Darker green on hover */
 }
 
-
 /* Dropdown menu */
 .dropdown {
     float: right;
@@ -261,7 +260,9 @@ footer {
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -270,6 +271,7 @@ footer {
 .dropdown:hover .dropbtn {
     background-color: #555;
 }
+
 /* Additional styles for product cards */
 .page-container {
     background: #f5f5f5;
@@ -291,6 +293,13 @@ footer {
     color: #333;
 }
 
+.product-container hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
 .product-container {
     display: flex;
     flex-wrap: wrap;
@@ -304,35 +313,131 @@ footer {
 
 .product-card {
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 300px;
     padding: 20px;
     text-align: center;
-    border: 1px solid #ddd;
-}
-
-.product-card-header {
-    background: #555;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
 }
 
 .product-card-body {
     padding: 20px;
 }
 
+.product-card-body img {
+    width: 100%;
+    height: 100%;
+}
+
 .product-image {
     width: 100%;
     height: 200px; /* Fixed height */
-    object-fit: cover; /* Ensures the image covers the area while maintaining aspect ratio */
+    object-fit: contain; /* Ensures the image covers the area while maintaining aspect ratio */
     margin-bottom: 15px;
 }
 
 .stars {
     color: gold;
     font-size: 1.5em;
+}
+
+.product-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.product-button-add-to-cart {
+    text-decoration: none;
+}
+
+.product-detail-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.product-detail-left {
+    flex: 1;
+    max-width: 60%;
+}
+
+.product-detail-left img {
+    width: 100%;    
+    height: 100%;
+}
+
+.product-detail-right {
+    flex: 1;
+    max-width: 40%;
+}
+
+.product-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.review-stars {
+    color: gold;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.product-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.product-buttons .btn {
+    flex: 1;
+    background: #4CAF50; /* Green background */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.product-buttons .btn:hover {
+    background: #45a049; /* Darker green on hover */
+}
+
+.reviews-container {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-card {
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.review-header p {
+    margin: 0;
+}
+
+.review-body {
+    margin-top: 10px;
+}
+
+.add-to-cart-symbol {
+    display: inline-block;
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+    background: url('/path/to/your/add-to-cart-icon.png') no-repeat center center;
+    background-size: contain;
+    margin-right: 10px; /* Adjust spacing */
 }

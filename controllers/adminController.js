@@ -12,7 +12,8 @@ exports.renderAdminPage = async (req, res) => {
             // Retrieve products created by the user
             const products = await Product.find({ createdBy: username });
             console.log(products.length)
-            res.render("admin", { title: "Admin", products });
+            res.render("admin", { title: "Admin", products, userName: username });
+            return;
         }
         res.redirect("/user")
 
